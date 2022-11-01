@@ -55,7 +55,13 @@ bash run.sh
 # to run all experiments
 ```
 
+You can also run experiments in the container one by one. See [here](#run-the-experiments) for details.
+
+```bash
+
 ## Build and run experiments from source
+
+You can also build and run experiments from source on your host environment.
 
 ### Installation
 
