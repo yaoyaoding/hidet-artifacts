@@ -18,6 +18,11 @@ Other workstation equipped with a modern NVIDIA GPU should also be able to run t
 
 We provide a docker image to run the experiments, with pre-configured environment.
 
+### Install docker and nvidia-docker
+
+Please follow the instructions on the [official website](https://github.com/NVIDIA/nvidia-docker) to install docker and 
+nvidia-docker.
+
 ### Prepare the image
 
 We provide two ways to get the docker image to use. Please choose the one you like.
