@@ -4,9 +4,7 @@ This repository contains the artifacts for the paper
 
 "Hidet: Task Mapping Programming Paradigm for Deep Learning Tensor Programs".
 
-## Installation
-
-### Requirements
+## Hardware requirements
 
 We did experiment on the following hardware platform
 
@@ -16,13 +14,76 @@ We did experiment on the following hardware platform
 
 Other workstation equipped with a modern NVIDIA GPU should also be able to run the experiments.
 
-On the software side, we require the following software to be installed
+The experiments require a Linux system with NVIDIA GPU driver installed.
+
+## Run experiments via docker
+
+We provide a docker image to run the experiments, with pre-configured environment.
+
+### Install docker and nvidia-docker
+
+Please follow the instructions on the [official website](https://github.com/NVIDIA/nvidia-docker) to install docker and 
+nvidia-docker.
+
+### Prepare the image
+
+We provide two ways to get the docker image to use. Please choose the one you like.
+
+#### Option 1: use the prebuilt image 
+
+```bash
+docker pull yyding/hidet-artifact:latest 
+```
+
+#### Option 2: build docker image from Dockerfile
+
+```bash
+git clone --recursive git@github.com:yaoyaoding/hidet-artifacts hidet
+cd hidet
+docker build -t yyding/hidet-artifact:latest .
+```
+
+### Run experiments inside docker container
+
+After above step, you can see a docker image named `yyding/hidet-artifact:latest` in your local docker image list via:
+
+```bash
+docker image ls
+```
+
+You should be able to see something like this:
+
+```text
+REPOSITORY              TAG       IMAGE ID       CREATED          SIZE
+yyding/hidet-artifact   latest    1074c09962c0   33 minutes ago   13.7GB
+```
+
+To run experiments, you need to start a docker container from the image:
+
+```bash
+# the following command will start a container based on the image
+# you will enter the container after the command at working directory /root/hidet/artifacts
+docker run -it --gpus all --rm yyding/hidet-artifact:latest
+# when you are in the container, run
+bash run.sh
+# to run all experiments
+```
+
+You can also run experiments in the container one by one. See [here](#run-the-experiments) for details.
+
+## Build and run experiments from source
+
+You can also build and run experiments from source on your host environment.
+
+### Installation
+
+We require the following software to be installed
 
 - cmake 3.19+
 - llvm (required by TVM, we used llvm-10)
 - ccache (used to accelerate duplicated compilation)
 
-### NVIDIA CUDA Toolkit
+#### NVIDIA CUDA Toolkit
 
 Please follow https://developer.nvidia.com/cuda-downloads guide to install the CUDA toolkit. 
 
@@ -35,15 +96,12 @@ nvidia-smi
 nvcc --version
 ```
 
-### Install Hidet and baselines
+#### Install Hidet and baselines
 
 ```bash
 # clone hidet repository 
-git clone git@github.com:yaoyaoding/hidet
+git clone --recursive git@github.com:yaoyaoding/hidet-artifacts hidet
 cd hidet
-git checkout artifact
-git submodule init
-git submodule update --recursive --init
 
 # install the dependencies of hidet and the baselines (e.g., TensorRT, PyTorch, Onnx Runtime)
 # the versions of baselines are specified in requirements.txt file.
@@ -70,7 +128,7 @@ python3 -c "import hidet"
 python3 -c "import artifact"
 ```
 
-# Run the experiments
+### Run the experiments
 
 This artifact contains all the experiments in the evaluation section of the paper:
 

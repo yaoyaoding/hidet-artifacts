@@ -1,0 +1,4 @@
+.hidet_cache
+build
+cmake-build-debug
+**/outs
