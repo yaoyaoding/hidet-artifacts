@@ -14,6 +14,8 @@ We did experiment on the following hardware platform
 
 Other workstation equipped with a modern NVIDIA GPU should also be able to run the experiments.
 
+The experiments require a Linux system with NVIDIA GPU driver installed.
+
 ## Run experiments via docker
 
 We provide a docker image to run the experiments, with pre-configured environment.
@@ -27,13 +29,13 @@ nvidia-docker.
 
 We provide two ways to get the docker image to use. Please choose the one you like.
 
-#### Use the prebuilt image 
+#### Option 1: use the prebuilt image 
 
 ```bash
 docker pull yyding:hidet-artifact:latest 
 ```
 
-#### Build docker image from Dockerfile
+#### Option 2: build docker image from Dockerfile
 
 ```bash
 git clone --recursive git@github.com:yaoyaoding/hidet-artifacts hidet
@@ -43,13 +45,20 @@ docker build -t yyding/hidet-artifact:latest .
 
 ### Run experiments inside docker container
 
-After above step, you can see a docker image named `yyding/hidet-artifact:latest` in your local docker image list via
+After above step, you can see a docker image named `yyding/hidet-artifact:latest` in your local docker image list via:
 
 ```bash
 docker image ls
 ```
 
-To run experiments, you need to start a docker container from the image. 
+You should be able to see something like this:
+
+```text
+REPOSITORY              TAG       IMAGE ID       CREATED          SIZE
+yyding/hidet-artifact   latest    1074c09962c0   33 minutes ago   13.7GB
+```
+
+To run experiments, you need to start a docker container from the image:
 
 ```bash
 # the following command will start a container based on the image
