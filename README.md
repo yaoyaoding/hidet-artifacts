@@ -132,12 +132,12 @@ python3 -c "import artifact"
 
 This artifact contains all the experiments in the evaluation section of the paper:
 
-- Experiment 0 (section 6.1): End to end performance comparison
-- Experiment 1 (section 6.2.1): Schedule space comparison
-- Experiment 2 (section 6.2.2): Performance sensitivity over input sizes
-- Experiment 3 (section 6.2.3): Evaluation on different batch sizes
-- Experiment 4 (section 6.2.4): Post-scheduling fusion evaluation
-- Experiment 5 (section 6.2.5): Comparison with TensorRT
+- Experiment 0 (section 6.1): End to end performance comparison (~50 hours)
+- Experiment 1 (section 6.2.1): Schedule space comparison (~1 hour)
+- Experiment 2 (section 6.2.2): Performance sensitivity over input sizes (~4 hours)
+- Experiment 3 (section 6.2.3): Evaluation on different batch sizes (~40 hours)
+- Experiment 4 (section 6.2.4): Post-scheduling fusion evaluation (~10 hours)
+- Experiment 5 (section 6.2.5): Comparison with TensorRT (~1.5 hour)
 
 The 6 experiments are organized in the `artifacts` directory. Each experiment corresponds to a directory with a `main.py` script. 
 Directly run the `main.py` script to launch corresponding experiments. We will automatically cache the optimized operator and models in `.hidet_cache` directory, thus you can stop and restart the experiments at any time. The second run of the experiments will be much faster.
