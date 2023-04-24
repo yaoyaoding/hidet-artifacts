@@ -6,6 +6,8 @@ This repository contains the artifacts for the paper
 
 "Hidet: Task Mapping Programming Paradigm for Deep Learning Tensor Programs".
 
+**Note**: This repository hosts the old version of Hidet when submitting the paper and is only used to reproducing the experiments. Please checkout the [hidet-org/hidet](https://github.com/hidet-org/hidet) repository for the latest version of Hidet. 
+
 ## Hardware requirements
 
 We did experiment on the following hardware platform
